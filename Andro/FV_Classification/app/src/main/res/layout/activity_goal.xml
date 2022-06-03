@@ -1,9 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".goal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/detailGambar"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/imgbellpaper" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detailGambar">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:padding="15dp"
+                android:id="@+id/deatilBuah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="deatil bla bla"/>
+            <TextView
+                android:id="@+id/tokopedia"
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/deatilBuah"
+                android:autoLink="all"
+                android:clickable="true"
+                android:text="www.tokopedia.com"/>
+            <TextView
+                android:paddingTop="2dp"
+                android:id="@+id/shopee"
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tokopedia"
+                android:autoLink="all"
+                android:clickable="true"
+                android:text="www.shopee.com"/>
+            <TextView
+                android:paddingTop="2dp"
+                android:id="@+id/lazada"
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shopee"
+                android:autoLink="all"
+                android:clickable="true"
+                android:text="www.lazada.com"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
