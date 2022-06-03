@@ -18,7 +18,6 @@ class camera : AppCompatActivity() {
     private val mModelPath = "converted_modelfruitlama.tflite"
     private val mLabelPath = "labelfruit.txt"
     private lateinit var classifier: Classifier
-
     val REQUEST_IMAGE_CAPTURE = 100
     lateinit var tombol: Button
     lateinit var imageView: ImageView
