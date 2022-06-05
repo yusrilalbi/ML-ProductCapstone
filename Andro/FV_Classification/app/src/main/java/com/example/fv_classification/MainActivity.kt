@@ -11,7 +11,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var navigate = findViewById<Button>(R.id.getStarted)
-
         navigate.setOnClickListener(){
             startActivity(Intent(this@MainActivity, menu::class.java))
         }

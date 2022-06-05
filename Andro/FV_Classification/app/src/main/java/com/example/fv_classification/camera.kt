@@ -23,14 +23,18 @@ class camera : AppCompatActivity() {
     private val mLabelPath = "labelfruit.txt"
     val REQUEST_IMAGE_CAPTURE = 100
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_camera)
 
         initClassifier()
 
+
         tombol = findViewById(R.id.buttonFoto)
         imageView = findViewById(R.id.gambar)
+
+
 
         tombol.setOnClickListener{
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -57,6 +61,15 @@ class camera : AppCompatActivity() {
             var result = classifier.recognizeImage(imageBitmap)
             var judul = findViewById<TextView>(R.id.judul)
             judul.text = result.get(0).title
+
+            var seeDetail = findViewById<Button>(R.id.seeDetail)
+            seeDetail.setOnClickListener(){
+                val intent = Intent(this@camera, goal::class.java)
+                intent.putExtra("bitmap", imageBitmap)
+                intent.putExtra("prediksi", result.get(0).title)
+                startActivity(intent)
+            }
+
 
         }else{
             super.onActivityResult(requestCode, resultCode, data)

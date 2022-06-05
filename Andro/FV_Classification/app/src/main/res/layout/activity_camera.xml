@@ -21,10 +21,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="74dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="142dp"
         android:layout_marginBottom="5dp"
-        android:text="Button" />
+        android:text="Take Foto" />
 
     <TextView
         android:id="@+id/judul"
@@ -34,5 +34,15 @@
         android:layout_marginTop="471dp"
         android:text="TEXT BEFORE"
         android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/seeDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/judul"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="57dp"
+        android:text="See Detail" />
 
 </RelativeLayout>

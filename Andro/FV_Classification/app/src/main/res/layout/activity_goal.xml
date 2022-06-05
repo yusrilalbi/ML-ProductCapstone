@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".goal">
 
-
     <LinearLayout
-        android:id="@+id/detailGambar"
+        android:paddingTop="4dp"
+        android:id="@+id/linearGambar"
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/detailGambar"
+            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             app:srcCompat="@drawable/imgbellpaper" />
 
     </LinearLayout>
@@ -25,51 +26,79 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/detailGambar">
-        <RelativeLayout
+        android:layout_below="@+id/linearGambar">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/detailBuah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
                 android:padding="15dp"
-                android:id="@+id/deatilBuah"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="deatil bla bla"/>
-            <TextView
-                android:id="@+id/tokopedia"
-                android:paddingLeft="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/deatilBuah"
-                android:autoLink="all"
-                android:clickable="true"
-                android:text="www.tokopedia.com"/>
-            <TextView
-                android:paddingTop="2dp"
-                android:id="@+id/shopee"
-                android:paddingLeft="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tokopedia"
-                android:autoLink="all"
-                android:clickable="true"
-                android:text="www.shopee.com"/>
-            <TextView
-                android:paddingTop="2dp"
-                android:id="@+id/lazada"
-                android:paddingLeft="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/shopee"
-                android:autoLink="all"
-                android:clickable="true"
-                android:text="www.lazada.com"/>
+                android:text="deatil bla bla aasa sa sa asa sas asasa asa sasa asa sa s ffrtre fhfgfgh erwerwe sas aa sas as as as  sa sas a asa sa asa sa s as as as" />
 
-        </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="E-Commerce Link"
+                android:textStyle="bold" />
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/tokopedia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/detailBuah"
+                    android:autoLink="all"
+                    android:clickable="true"
+                    android:linksClickable="true"
+                    android:paddingLeft="15dp"
+                    android:text="tokopedia" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="     "/>
+
+                <Button
+                    android:id="@+id/shopee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tokopedia"
+                    android:autoLink="all"
+                    android:clickable="true"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="2dp"
+                    android:text="shopee" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="     "/>
+
+                <Button
+                    android:id="@+id/lazada"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/shopee"
+                    android:autoLink="all"
+                    android:clickable="true"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="2dp"
+                    android:text="lazada" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
     </ScrollView>
 
 
-</RelativeLayout>
+</LinearLayout>
