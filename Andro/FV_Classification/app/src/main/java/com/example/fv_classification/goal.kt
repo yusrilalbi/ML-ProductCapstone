@@ -42,8 +42,12 @@ class goal : AppCompatActivity() {
 
         try{
             var mBitmap = intent.getParcelableExtra<Bitmap>("bitmap")
+            var mUri = intent.getParcelableExtra<Uri>("uri")
             var prediksi = intent.getStringExtra("prediksi")
-            gambar.setImageBitmap(mBitmap)
+            if (mUri == null)
+                gambar.setImageBitmap(mBitmap)
+            else
+                gambar.setImageURI(mUri)
 //            detailBuah.text = "${prediksi}"
             linkTokped.setOnClickListener(){
                 openLink("https://www.tokopedia.com/search?st=product&q=${prediksi}")

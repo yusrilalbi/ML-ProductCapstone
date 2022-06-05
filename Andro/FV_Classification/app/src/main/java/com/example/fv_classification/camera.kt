@@ -58,6 +58,7 @@ class camera : AppCompatActivity() {
             val imageBitmap = data?.extras?.get("data") as Bitmap
             imageView.setImageBitmap(imageBitmap)
 
+
             var result = classifier.recognizeImage(imageBitmap)
             var judul = findViewById<TextView>(R.id.judul)
             judul.text = result.get(0).title

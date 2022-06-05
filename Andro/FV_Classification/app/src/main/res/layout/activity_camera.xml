@@ -1,48 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".camera">
 
+        <Button
+            android:layout_gravity="center"
+            android:id="@+id/buttonFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Take Foto" />
+
     <ImageView
+
+        android:layout_gravity="center"
         android:id="@+id/gambar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="213dp"
-        android:layout_marginBottom="312dp"
+        android:layout_height="400dp"
         app:srcCompat="@drawable/imgbellpaper" />
 
-    <Button
-        android:id="@+id/buttonFoto"
+    <TextView
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center"
+        android:id="@+id/judul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="142dp"
-        android:layout_marginBottom="5dp"
-        android:text="Take Foto" />
-
-    <TextView
-        android:id="@+id/judul"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="471dp"
         android:text="TEXT BEFORE"
         android:textAlignment="center" />
 
     <Button
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center"
         android:id="@+id/seeDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/judul"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="57dp"
         android:text="See Detail" />
 
-</RelativeLayout>
+</LinearLayout>
