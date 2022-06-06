@@ -23,18 +23,14 @@ class camera : AppCompatActivity() {
     private val mLabelPath = "labelfruit.txt"
     val REQUEST_IMAGE_CAPTURE = 100
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_camera)
 
         initClassifier()
 
-
         tombol = findViewById(R.id.buttonFoto)
         imageView = findViewById(R.id.gambar)
-
-
 
         tombol.setOnClickListener{
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
