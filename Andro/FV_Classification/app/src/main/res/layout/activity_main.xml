@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
             android:gravity="center"
-            android:text="Connect With Real Time \nData Crypto"
+            android:text="Connect With Fruit and Vegetable Classification"
             android:textColor="#3F51B5"
             android:textSize="24sp"
             android:textStyle="bold" />

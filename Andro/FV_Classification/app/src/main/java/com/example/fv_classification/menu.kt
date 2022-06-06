@@ -16,6 +16,7 @@ import com.example.fv_classification.data.detailData
 import com.example.fv_classification.data.detailPassing
 import com.example.fv_classification.tflite.Classifier
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_menu.*
 import okhttp3.Callback
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -32,7 +33,7 @@ class menu : AppCompatActivity() {
     private val mInputSize = 150
     private val mModelPath = "converted_modelfruitlama.tflite"
     private val mLabelPath = "labelfruit.txt"
-    val REQUEST_IMAGE_CAPTURE = 100
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
@@ -66,18 +67,19 @@ class menu : AppCompatActivity() {
 
         var uri: Uri?= data?.data
         uploadFile.setImageURI(data?.data)
-        val imageBitmap = uploadFile.drawable.toBitmap()
         bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
 
         var result = classifier.recognizeImage(bitmap)
-
-        uploadFile.setOnClickListener(){
+        val uploadButton = findViewById<Button>(R.id.seeUpload)
+//        uploadFile.setOnClickListener(){
+//
+//        }
+        uploadButton.setOnClickListener(){
             val intent = Intent(this@menu, goal::class.java)
             intent.putExtra("uri", uri)
             intent.putExtra("prediksi", result.get(0).title)
             startActivity(intent)
         }
-
     }
 
     private fun initClassifier() {
