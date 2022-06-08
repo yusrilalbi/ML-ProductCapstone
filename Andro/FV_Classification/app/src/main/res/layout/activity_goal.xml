@@ -38,7 +38,8 @@
                 android:layout_height="wrap_content"
                 android:autoSizeTextType="uniform"
                 android:padding="15dp"
-                android:text="deatil bla bla aasa sa sa asa sas asasa asa sasa asa sa s ffrtre fhfgfgh erwerwe sas aa sas as as as  sa sas a asa sa asa sa s as as as" />
+                android:text="deatil bla bla aasa sa sa asa sas asasa asa sasa asa sa s ffrtre fhfgfgh erwerwe sas aa sas as as as  sa sas a asa sa asa sa s as as as"
+                android:textAlignment="center" />
 
             <TextView
                 android:layout_width="match_parent"
