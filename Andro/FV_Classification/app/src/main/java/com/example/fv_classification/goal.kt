@@ -24,6 +24,7 @@ import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
+import java.util.ArrayList
 
 class goal : AppCompatActivity() {
 
@@ -34,44 +35,34 @@ class goal : AppCompatActivity() {
         setContentView(R.layout.activity_goal)
 
         var gambar = findViewById<ImageView>(R.id.detailGambar)
-        var linkTokped = findViewById<Button>(R.id.tokopedia)
-        var linkShopee = findViewById<Button>(R.id.shopee)
-        var linkLazada = findViewById<Button>(R.id.lazada)
-//        var detailBuah = findViewById<TextView>(R.id.detailBuah)
-        var link = linkPassing()
-
-        try{
+        var detailBuah = findViewById<TextView>(R.id.detailBuah)
+        try {
             var mBitmap = intent.getParcelableExtra<Bitmap>("bitmap")
             var mUri = intent.getParcelableExtra<Uri>("uri")
             var prediksi = intent.getStringExtra("prediksi")
+
             if (mUri == null)
+                //from take picture
                 gambar.setImageBitmap(mBitmap)
             else
+                //from upload file
                 gambar.setImageURI(mUri)
-//            detailBuah.text = "${prediksi}"
-            linkTokped.setOnClickListener(){
-                openLink("https://www.tokopedia.com/search?st=product&q=${prediksi}")
-            }
-            linkShopee.setOnClickListener(){
-                openLink("https://shopee.co.id/search?keyword=${prediksi}")
-            }
-            linkLazada.setOnClickListener(){
-                openLink("https://www.lazada.co.id/catalog/?q=${prediksi}&_keyori=ss&from=input")
-            }
 
             run("https://en.wikipedia.org/api/rest_v1/page/summary/${prediksi}")
+            linkAPI("https://ml-api-productcapstone.herokuapp.com/link/${prediksi}")
 
-        }
-        catch(e: ActivityNotFoundException){
-            linkShopee.text = "ERROR"
+        } catch (e: ActivityNotFoundException) {
+
         }
 
     }
 
     fun run(url: String) {
+        Log.d("tesurl", url)
         val request = Request.Builder()
             .url(url)
             .build()
+        Log.d("tesurl", request.toString())
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: okhttp3.Call, e: IOException) {}
@@ -80,9 +71,7 @@ class goal : AppCompatActivity() {
                 val gson = Gson()
                 var mDetail = gson.fromJson(listJson.toString(), detailData::class.java)
                 var detailBuah = findViewById<TextView>(R.id.detailBuah)
-                Log.d("sayakuti", mDetail.extract.toString())
-                var tex = mDetail.extract.toString()
-//                detailBuah.text = "tex"
+                var tex = mDetail.extract
                 val handler = Handler(Looper.getMainLooper())
                 handler.post({
                     detailBuah.text = tex
@@ -94,8 +83,44 @@ class goal : AppCompatActivity() {
 
     }
 
-    fun openLink(url: String){
+    fun openLink(url: String) {
         val uris = Uri.parse(url)
         startActivity(Intent(Intent.ACTION_VIEW, uris))
+    }
+
+    fun linkAPI(url: String) {
+        var urlNew = url.replace(" ", "_")
+        val request = Request.Builder()
+            .url(urlNew)
+            .build()
+        try {
+            var linkTokped = findViewById<Button>(R.id.tokopedia)
+            var linkShopee = findViewById<Button>(R.id.shopee)
+            var linkLazada = findViewById<Button>(R.id.lazada)
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: okhttp3.Call, e: IOException) {}
+                override fun onResponse(call: okhttp3.Call, response: Response) {
+                    val listJson = response.body()?.string()
+                    var detailBuah = findViewById<TextView>(R.id.detailBuah)
+                    val gson = Gson()
+                    var mDetail = gson.fromJson(listJson, Array<String>::class.java)
+                    linkTokped.setOnClickListener() {
+                        openLink(mDetail[0])
+                    }
+                    linkShopee.setOnClickListener() {
+                        openLink(mDetail[1])
+                    }
+                    linkLazada.setOnClickListener() {
+                        openLink(mDetail[2])
+                    }
+                }
+            })
+        }
+        catch (e: ActivityNotFoundException) {
+
+        }
+
+
     }
 }
